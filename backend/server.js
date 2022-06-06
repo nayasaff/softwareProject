@@ -4,8 +4,10 @@ const dotenv = require("dotenv").config();
 const mongoose = require("mongoose");
 //const morgan = require("morgan");
 //all these mawgoodin f package.json
-
+const connectDB = require("./config/db");
 const app = express(); // to create an app
+
+connectDB();
 
 /*mongoose
   .connect(process.env.MONGO_URI, {
@@ -15,7 +17,7 @@ const app = express(); // to create an app
   .then(() => console.log("db is connected"))
   .catch((err) => console.log("kill yourself")); */
 
-app.use("/api/goals", require(".routes/router"));
+app.use("/api/orders", require("./routes/router"));
 
 //app.use(morgan("dev"));
 //app.use(cors({ origin: true, credential: true }));
@@ -23,7 +25,7 @@ app.use("/api/goals", require(".routes/router"));
 const port = process.env.PORT || 5000;
 
 const server = app.listen(port, () =>
-  console.log("The server is running on teezy " + port)
+  console.log("The server is running on " + port)
 );
 
 /*mongoose
@@ -33,3 +35,5 @@ const server = app.listen(port, () =>
   })
   .then(() => console.log("db is connected"))
   .catch((err) => console.log("kill yourself")); */
+
+//models ??????????????????????????????????
