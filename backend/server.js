@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 //all these mawgoodin f package.json
 const connectDB = require("./config/db");
 const app = express(); // to create an app
+app.use(express.json());
 
 connectDB();
 
